@@ -1,12 +1,9 @@
 package com.github.adambots.stronghold2016.auton;
 
-import org.usfirst.frc.team245.robot.Actuators;
 import org.usfirst.frc.team245.robot.Sensors;
-
 import com.github.adambots.stronghold2016.arm.Arm;
 import com.github.adambots.stronghold2016.drive.Drive;
-
-import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
+import com.github.adambots.stronghold2016.auton.Left;
 
 public class Barrier_Porticullis extends Barrier {
 	static int counter;
@@ -15,10 +12,9 @@ public class Barrier_Porticullis extends Barrier {
 
 	public static void Porticullis(double raise, double speed) {
 		boolean position = false;
-		double tolerance = 0;
+		double tolerance = 5;
 		if (position == false) {
 			Drive.drive(speed);
-
 		}
 		if (position == true)
 			if (Sensors.getStringPotArmAngle() < raise) {
@@ -36,12 +32,12 @@ public class Barrier_Porticullis extends Barrier {
 			if (counter >= clearanceTime) {
 				Drive.drive(speed);
 			}
-			if (counter >= clearanceTime && Sensors.getRobotGyro().getAngle() > -tolerance
-					&& Sensors.getRobotGyro().getAngle() < tolerance) {
-				if (Sensors.getArmMinLimitSwitch().get() == false) {
-					Arm.moveArm(-armIncrement);// might need to change increment
-				}
-			}
+		}
+		if (counter >= clearanceTime && Sensors.getRobotGyro().getAngle() > -tolerance
+				&& Sensors.getRobotGyro().getAngle() < tolerance) {
+			if (Sensors.getArmMinLimitSwitch().get() == false) {
+				Arm.moveArm(-armIncrement);// might need to change increment
+			} 
 		}
 
 	}
