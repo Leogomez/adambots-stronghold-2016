@@ -1,10 +1,9 @@
 package com.github.adambots.stronghold2016.auton;
 
-import org.usfirst.frc.team245.robot.Actuators;
 import org.usfirst.frc.team245.robot.Sensors;
+import org.usfirst.frc.team245.robot.Actuators;
 import com.github.adambots.stronghold2016.arm.Arm;
 import com.github.adambots.stronghold2016.drive.Drive;
-import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 
 public class Barrier_Porticullis extends Barrier {
 	static boolean raisePosition = false;
@@ -33,6 +32,7 @@ public class Barrier_Porticullis extends Barrier {
 					return true;
 				}
 			}
+
 		}
 		return false;
 
