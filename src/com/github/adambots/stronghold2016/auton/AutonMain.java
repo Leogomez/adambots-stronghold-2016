@@ -64,6 +64,7 @@ public class AutonMain {
 		 * Position); Actuators.getRightDriveMotor().set(testTarget);
 		 * Actuators.getRightDriveMotor().enable();
 		 */
+		Left.goLeft();
 	}
 
 }
