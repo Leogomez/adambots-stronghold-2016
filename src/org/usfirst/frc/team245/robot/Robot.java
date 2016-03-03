@@ -10,7 +10,7 @@ import com.github.adambots.stronghold2016.auton.FarLeft;
 import com.github.adambots.stronghold2016.auton.FarRight;
 import com.github.adambots.stronghold2016.auton.Forward;
 import com.github.adambots.stronghold2016.auton.Left;
-import com.github.adambots.stronghold2016.auton.Right;
+import com.github.adambots.stronghold2016.auton.Left;
 import com.github.adambots.stronghold2016.auton.SuperRight;
 import com.github.adambots.stronghold2016.dash.Dash_Camera;
 import com.github.adambots.stronghold2016.dash.Dash_StringPotentiometer;
@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Forward", new Forward());
 		chooser.addObject("left two positions", new FarLeft());
 		chooser.addObject("left one positions", new Left());
-		chooser.addObject("right one positions", new Right());
+		chooser.addObject("right one positions", new Left());
 		chooser.addObject("right two positions", new FarRight());
 		chooser.addObject("right three positions", new SuperRight());
 		// TODO: Uncomment inits
