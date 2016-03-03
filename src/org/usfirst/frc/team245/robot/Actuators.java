@@ -30,7 +30,7 @@ public class Actuators {
 	private static final int DRIVE_MOTOR_ACCEPTABLE_ERROR = 0;
 	private static final float PEAK_REVERSE_VOLTAGE = -12f;
 	private static final float PEAK_FORWARD_VOLTAGE = +12f;
-	private static final int CODES_PER_REV = (int) (620);
+	private static final int CODES_PER_REV = (int) (630);//620
 	
 	//The PID constants for right drive motors
 	private static final double RIGHT_DRIVE_KP = 2;
@@ -70,6 +70,8 @@ public class Actuators {
 	private static Solenoid driveShiftPneumatic;
 
 	private static Solenoid winchRatchetPneumatic;
+	
+	private static Solenoid ringLight;
 
 	/**
 	 * Initializes all actuators
@@ -95,8 +97,8 @@ public class Actuators {
 		leftDriveMotor2.setInverted(true);
 		leftDriveMotor2.set(leftDriveMotor.getDeviceID());
 
-		armWinchMotor1 = new VictorSP(12);
-		armWinchMotor2 = new VictorSP(13);
+		armWinchMotor1 = new VictorSP(1);
+		armWinchMotor2 = new VictorSP(0);
 		armWinchMotor2.setInverted(true);
 
 		armAngleMotor = new CANTalon(4);
@@ -105,9 +107,9 @@ public class Actuators {
 		//TODO: Use string pot with CANTalon
 		
 
-		boulderIntakeMotor = new VictorSP(4);
+		boulderIntakeMotor = new VictorSP(2);
 
-		catapultMotor = new VictorSP(14);
+		catapultMotor = new VictorSP(3);
 
 		// Solenoids
 		driveShiftPneumatic = new Solenoid(0);
@@ -195,6 +197,13 @@ public class Actuators {
 
 	public static Solenoid getWinchRatchetPneumatic() {
 		return winchRatchetPneumatic;
+	}
+	
+	/**
+	 * @return the ringLight
+	 */
+	public static Solenoid getRingLight() {
+		return ringLight;
 	}
 
 	private static CANTalon initCANTalon(CANTalon talon, FeedbackDevice device, boolean reverseSensor, int codesPerRev, int acceptableErr, 
