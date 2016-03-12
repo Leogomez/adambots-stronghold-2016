@@ -33,14 +33,14 @@ public class Actuators {
 	private static final int CODES_PER_REV = (int) (630);//620
 	
 	//The PID constants for right drive motors
-	private static final double RIGHT_DRIVE_KP = 2;
+	private static final double RIGHT_DRIVE_KP = 1;
 	private static final double RIGHT_DRIVE_KI = 0;
 	private static final double RIGHT_DRIVE_KD = 0.025;
-	private static final boolean RIGHT_DRIVE_REVERSE_SENSOR = true;
+	private static final boolean RIGHT_DRIVE_REVERSE_SENSOR = false; //ADAMBOTS ONLY
 	
 	
 	//The PID constants for left drive motors
-	private static final double LEFT_DRIVE_KP = 2;
+	private static final double LEFT_DRIVE_KP = 1;
 	private static final double LEFT_DRIVE_KI = 0;
 	private static final double LEFT_DRIVE_KD = 0.025;
 	private static final boolean LEFT_DRIVE_REVERSE_SENSOR = true;
@@ -77,7 +77,6 @@ public class Actuators {
 	 * Initializes all actuators
 	 */
 	public static void init() {
-		// TODO: Change ID's
 		// Motors
 		rightDriveMotor = new CANTalon(2);
 		rightDriveMotor = initCANTalon(rightDriveMotor, FeedbackDevice.QuadEncoder, RIGHT_DRIVE_REVERSE_SENSOR, 
@@ -105,7 +104,6 @@ public class Actuators {
 		armAngleMotor = initCANTalon(armAngleMotor, FeedbackDevice.AnalogPot, ARM_REVERSE_SENSOR, 
 				ARM_POT_TURNS_PER_REV, ARM_ACCEPTABLE_EROR, ARM_ANGLE_KP, ARM_ANGLE_KI, ARM_ANGLE_KD);
 		//TODO: Use string pot with CANTalon
-		
 
 		boulderIntakeMotor = new VictorSP(2);
 
@@ -114,6 +112,7 @@ public class Actuators {
 		// Solenoids
 		driveShiftPneumatic = new Solenoid(0);
 		winchRatchetPneumatic = new Solenoid(1);
+//		ringLight = new Solenoid(-1);
 	}
 	
 	/**
