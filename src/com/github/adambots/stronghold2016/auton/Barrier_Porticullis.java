@@ -21,6 +21,7 @@ public class Barrier_Porticullis extends Barrier {
 		if (raisePosition == false) {
 			Drive.driveWithPID(distance, distance);
 		}
+<<<<<<< HEAD
 		if (Actuators.getLeftDriveMotor().getError() <= 20) {
 			raisePosition = true;
 			if (Sensors.getStringPotArmAngle() < raise) {
@@ -30,6 +31,29 @@ public class Barrier_Porticullis extends Barrier {
 				if (Actuators.getLeftDriveMotor().getError() <= 20) {
 					crossedPosition = true;
 					return true;
+=======
+		if (position == true)
+			// if (Sensors.getStringPotArmAngle() < raise) {
+			Arm.moveArm(armIncrement);// Arm speed may change
+		// }
+		else {
+			Drive.drive(speed);
+			// needs positioning
+			if (Sensors.getRobotGyro().getAngle() > -tolerance) {
+
+			}
+		}
+		// needs positioning
+		if (Sensors.getRobotGyro().getAngle() > -tolerance && Sensors.getRobotGyro().getAngle() < tolerance) {
+			counter++;
+			if (counter >= clearanceTime) {
+				Drive.drive(speed);
+			}
+			if (counter >= clearanceTime && Sensors.getRobotGyro().getAngle() > -tolerance
+					&& Sensors.getRobotGyro().getAngle() < tolerance) {
+				if (Sensors.getArmMinLimitSwitch().get() == false) {
+					Arm.moveArm(-armIncrement);// might need to change increment
+>>>>>>> refs/remotes/Adambots-245/master
 				}
 			}
 
